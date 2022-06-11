@@ -30,12 +30,43 @@ const thoughtSchema = new Schema({
     id: false
   }
   );
-
 // Create a virtual called friendCount that retrieves 
 // the length of the thought's "reactions" array field on query.
 thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
   });
+
+
+const reactionSchema = new Schema(
+  {
+    reactionId: {
+        //Use Mongoose's ObjectId data type
+      type: Schema.Types.ObjectId,
+        // Default value is set to a new ObjectId
+      default: () => new Types.ObjectId()
+    },
+    reactionBody: {
+      type: String,
+      required: true,
+      maxlength: [280]
+    },
+    username: {
+      type: String,
+      required: true
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: createdAtVal => dateFormat(createdAtVal)
+    }
+  },
+  {
+    toJSON: {
+      getters: true
+    },
+    id: false
+  }
+);
 
 const User = model('Thought', thoughtSchema);
 module.exports = Thought;
