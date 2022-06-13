@@ -4,6 +4,7 @@ const thoughtController = {
   // get all thoughts
   getThoughts(req, res) {
     Thought.find()
+      .select('-__v')
       .sort({ createdAt: -1 })
       .then((dbThoughtData) => {
         res.json(dbThoughtData);

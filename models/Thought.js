@@ -1,9 +1,10 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const reactionSchema = new Schema(
   {
-    reactionId: {
         //Use Mongoose's ObjectId data type
+    reactionId: {
       type: Schema.Types.ObjectId,
         // Default value is set to a new ObjectId
       default: () => new Types.ObjectId()
@@ -29,7 +30,7 @@ const reactionSchema = new Schema(
     },
     id: false
   }
-)
+);
 
 const thoughtSchema = new Schema({
     thoughtText: {
@@ -66,9 +67,6 @@ const thoughtSchema = new Schema({
 thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
   });
-
-
-
 
 
 const Thought = model('Thought', thoughtSchema);
