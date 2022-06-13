@@ -13,7 +13,7 @@ This is an API for a social network web application where users can share their 
   - [Contributors](#contributors)
 
 
-### My walthrough video: 
+### My walthrough video: https://drive.google.com/file/d/1e_QV6RtfoMjVAaKmH6GpcIo40n_QzZcI/view
 
 
 ## Usage
